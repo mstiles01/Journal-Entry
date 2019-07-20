@@ -1,54 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link rel="stylesheet" type="text/css" media="screen" href="styles/journal.css">
+    <link rel="stylesheet" href="/styles/journal.css">
+
+    <link href="https://fonts.googleapis.com/css?family=VT323&display=swap" rel="stylesheet">
+
+
+    <title>Daily Journal</title>
 </head>
-
 <body>
-    
-    <h1>Daily Journal</h1>
-    <form action="">
-        <fieldset>
-            <label for="journalDate">Date of Entry</label>
-            <input type="date" name="journalDate" id="journalDate">
-        </fieldset>
-    </form>
-
-    <form action="">
-        <fieldset>
-            <label for="conceptsCovered">Concepts Covered</label>
-            <input type="text" name="conceptsCovered" id="conceptsCovered">
-        </fieldset>
-    </form>
-
-    <form action="">
-        <fieldset>
-            <label for="journalEntry">Journal Entry</label>
-            <textarea rows="4" cols="50" type="text" name="journalEntry" id="journalEntry">
-                        </textarea>
-        </fieldset>
-    </form>
-    <form action="">
-        <fieldset>
-            <select  id="mood" name="mood">
-                <option>Sad</option>
-                <option>Neutral</option>
-                <option>Happy</option>
-            </select>
-        </fieldset>
-    </form>
-    <div>
-    <button type="recordJE" form="recordJE" value="recordJE" id="recordJE">Record Journal Entry</button>
+    <header class="vheader--container">
+    <div class="fullscreen--video--wrap">
+    <video src="lighton.mov" autoplay="true" loop="true" muted="true" ></video>
     </div>
-    <article id="entryLog">
+    <div class="header-overlay"></div>
+    
+    <div class="content">
+    <h1 class="title"> Daily Journal </h1>
 
-        </article>
+    <form class="dailyJournal">
+        <label for="date"> Date: </label>
+        <input class="input" type="date"> 
+
+        <label for="topic"> Topic: </label>
+        <select class="input">
+            <option> HTML/CSS </option>
+            <option> Javascript </option>
+            <option> React </option>
+            <option> C# </option>
+            <option> Career </option>
+            <option> Other </option>
+        </select>
+
+        <label for="entry"> Entry: </label>
+        <textarea class="input" rows="7" cols="15"></textarea>
+
+        <label for="mood"> Mood: </label>
+        <select class="input">
+            <option> Happy </option>
+            <option> Neutral </option>
+            <option> Frustrated </option>   
+            <option>Sad</option>        
+
+        </select>
+        <div class="btnContainer">
+        <button class="saveBtn" >Record Entry</button>
+        </div>
+
+    </form>
+
+    <div class="entries">
+        <h3 class="title"> Log </h3>
+        <p class="pastEntries">
+
+        </p>
+    </div>
+
     <script src="/scripts/journal.js"></script>
 </body>
-
+</div>
+</header>
 </html>
+
