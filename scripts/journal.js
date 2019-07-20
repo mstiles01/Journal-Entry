@@ -34,4 +34,4 @@ const journalEntry2 = {
 }
 makeJournalEntryComponent(journalEntry1)
 makeJournalEntryComponent(journalEntry2)
-
+makeJournalEntryComponent()
