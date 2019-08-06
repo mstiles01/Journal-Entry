@@ -38,6 +38,4 @@ document.querySelector("#saveBtn").addEventListener("click", (event) => {
    saveJournalEntry(newJournalEntry).then(dataRender)
   
 })
-
-
-
+}
