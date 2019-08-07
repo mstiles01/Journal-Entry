@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,61 +11,67 @@
 
     <title>Daily Journal</title>
 </head>
+
 <body>
     <header class="vheader--container">
-    <div class="fullscreen--video--wrap">
-    <!-- <video src="lighton.mov" autoplay="true" loop="true" muted="true" ></video> -->
-    </div>
-    <div class="header-overlay"></div>
-    
-    <div class="content">
-    <h1 class="title"> Daily Journal </h1>
-
-    <form class="dailyJournal">
-        <label for="date"> Date: </label>
-        <input id="dateInput" type="date"> 
-
-        <label for="topic"> Topic: </label>
-        <select id="topicInput">
-            <option> HTML/CSS </option>
-            <option> Javascript </option>
-            <option> React </option>
-            <option> C# </option>
-            <option> Career </option>
-            <option> Other </option>
-        </select>
-
-        <label for="entry"> Entry: </label>
-        <textarea id="textInput" rows="7" cols="15"></textarea>
-
-        <label for="mood"> Mood: </label>
-        <select id="moodInput">
-            <option> Happy </option>
-            <option> Neutral </option>
-            <option> Frustrated </option>   
-            <option>Sad</option>        
-
-        </select>
-        <div class="btnContainer">
-        <input type="submit" id="saveBtn" >Record Entry</input>
+        <div class="fullscreen--video--wrap">
+            <!-- <video src="lighton.mov" autoplay="true" loop="true" muted="true" ></video> -->
         </div>
+        <div class="header-overlay"></div>
 
-    </form>
+        <div class="content">
+            <h1 class="title"> Daily Journal </h1>
 
-    <div class="entries">
-        <h3 class="title"> Log </h3>
-        <p class="pastEntries">
+            <form class="dailyJournal">
+                <label for="date"> Date: </label>
+                <input id="dateInput" type="date">
 
-        </p>
-    </div>
+                <label for="topic"> Topic: </label>
+                <select id="topicInput">
+                    <option> HTML/CSS </option>
+                    <option> Javascript </option>
+                    <option> React </option>
+                    <option> C# </option>
+                    <option> Career </option>
+                    <option> Other </option>
+                </select>
 
-    <script src="/scripts/data.js"></script>
-    <script src="/scripts/entryComponent.js"></script>
-    <script src="/scripts/entriesDOM.js"></script>
-    <script src="/scripts/journal.js"></script>
+                <label for="entry"> Entry: </label>
+                <textarea id="textInput" rows="7" cols="15"></textarea>
+
+                <label for="mood"> Mood: </label>
+                <select id="moodInput">
+                    <option value="Happy"> Happy </option>
+                    <option value="Neutral"> Neutral </option>
+                    <option value="Frustrated"> Frustrated </option>
+                    <option value="Sad">Sad</option>
+
+                </select>
+                <div class="btnContainer">
+                    <input type="submit" id="saveBtn">Record Entry</input>
+                </div>
+
+                <div id="radioContainer">
+                    <h1>Filter by Mood</h1>
+                    <input type="radio" value="Happy" id="radioHap" name="moodSelect">Happy
+                    <input type="radio" value="Neutral" id="radioNeut" name="moodSelect">Neutral
+                    <input type="radio" value="Frustrated" id="radioFrust" name="moodSelect">Frustrated
+                    <input type="radio" value="Sad" id="radioSad" name="moodSelect">Sad
+                </div>
+
+            </form>
+
+            <div class="entries">
+                <h3 class="title"> Log </h3>
+                <p class="pastEntries">
+
+                </p>
+            </div>
+
+            <script type="module" src="./scripts/main.js"></script>
 
 </body>
 </div>
 </header>
-</html>
 
+</html>

@@ -21,3 +21,6 @@ const createEntryObj = (date, topic, entry, mood) => {
     }
 }
 
+export default {
+    createJournalEntryComponent, createEntryObj
+}

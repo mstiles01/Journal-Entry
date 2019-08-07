@@ -26,3 +26,9 @@ const saveJournalEntry = (newJournalEntry) => {
 // Calling the function.
 
 
+export default {
+    entriesFetcher, saveJournalEntry
+}
+
+
+
