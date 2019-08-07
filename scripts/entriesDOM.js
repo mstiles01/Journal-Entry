@@ -4,3 +4,7 @@ const placingEntries = document.querySelector(".entries")
 const displayEntriesInDOM = (entriesHTMLRep) => {
     placingEntries.innerHTML += entriesHTMLRep
 }
+
+export default {
+    placingEntries, displayEntriesInDOM
+}
