@@ -7,6 +7,7 @@ const createJournalEntryComponent = (journalEntry) => {
      <h3>${journalEntry.Topic}</h3>
      <h3>${journalEntry.Entry}</h3>
      <h3>${journalEntry.Mood}</h3>
+     <button id="deleteBTN--${journalEntry.id}">Delete Button</button>
      </article>`
 
 
@@ -20,6 +21,8 @@ const createEntryObj = (date, topic, entry, mood) => {
         Mood: mood
     }
 }
+
+
 
 export default {
     createJournalEntryComponent, createEntryObj

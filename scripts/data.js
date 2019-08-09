@@ -23,11 +23,20 @@ const saveJournalEntry = (newJournalEntry) => {
         .then(entries => entries.json())
 
 }
+
+const deleteEntry = (journalEntryID) => {
+    return fetch(`http://localhost:3000/entries/${journalEntryID}`, {
+        method: "DELETE"
+    })
+        .then(response => response.json())
+
 // Calling the function.
+}
+
 
 
 export default {
-    entriesFetcher, saveJournalEntry
+    entriesFetcher, saveJournalEntry, deleteEntry
 }
 
 
