@@ -1,6 +1,6 @@
 
 import dataManager from "./data.js"
-import HTMLRep from "./entryComponent.js"
+import createJournalEntryComponent from "./entryComponent.js"
 import DOMRep from "./entriesDOM.js"
 
 
@@ -10,29 +10,42 @@ const textInput = document.querySelector("#textInput")
 const topicInput = document.querySelector("#topicInput")
 const dateInput = document.querySelector("#dateInput")
 const entriesDIV = document.querySelector(".entries")
-const entryLog = document.querySelector(".entryLog")
+// const entryLog = document.querySelector(".entryLog")
+// How w
 
-const getDataRender = () => {
     entriesDIV.innerHTML = ""
-    dataManager.entriesFetcher()
-        .then(arrayOfEntries => {
-            
-            for (let currentEntry of arrayOfEntries) {
-                let convertedJournal = HTMLRep.createJournalEntryComponent(currentEntry);
-                DOMRep.displayEntriesInDOM(convertedJournal)
-        }
-        })
 
-    }       
+ 
+
+
+        dataManager.entriesFetcher()
+            .then(arrayOfEntries => {
+                for (let currentEntry of arrayOfEntries) {
+                    let convertedJournal = createJournalEntryComponent.createJournalEntryComponent(currentEntry);
+                    DOMRep.displayEntriesInDOM(convertedJournal)
+            }
+            })
+
+
+
+
+          
 
             
 
 
 document.querySelector("#saveBtn").addEventListener("click", (event) => {
     event.preventDefault();
-    const newJournalEntry = HTMLRep.createEntryObj(dateInput.value, topicInput.value, textInput.value, moodInput.value)
-    console.log(newJournalEntry)
-    dataManager.saveJournalEntry(newJournalEntry).then(getDataRender)
+    const newJournalEntry = createJournalEntryComponent.createEntryObj(dateInput.value, topicInput.value, textInput.value, moodInput.value)
+    dataManager.saveJournalEntry(newJournalEntry).then(() => {
+        dataManager.entriesFetcher().then(entries => {
+            entriesDIV.innerHTML = ""
+            for (let journal of entries) {
+                let converted = createJournalEntryComponent.createJournalEntryComponent(journal)
+                DOMRep.displayEntriesInDOM(converted);
+            } 
+        })
+    })
 })
 
 const happyBTN = document.querySelector("#radioHap")
@@ -46,8 +59,8 @@ happyBTN.addEventListener("click", (event) => {
     dataManager.entriesFetcher().then(entries => {
         const filteredEntries = entries.filter(entry => entry.Mood === mood)
         entriesDIV.innerHTML = ""
-        for (const journal of filteredEntries) {
-            const converted = HTMLRep.createJournalEntryComponent(journal)
+        for (let journal of filteredEntries) {
+            let converted = createJournalEntryComponent.createJournalEntryComponent(journal)
             DOMRep.displayEntriesInDOM(converted);
         } 
     })
@@ -58,8 +71,8 @@ newtBTN.addEventListener("click", (event) => {
         const filteredEntries = entries.filter(entry => entry.Mood === mood)
         console.log(filteredEntries)
         entriesDIV.innerHTML = ""
-        for (const journal of filteredEntries) {
-            const converted = HTMLRep.createJournalEntryComponent(journal)
+        for (let journal of filteredEntries) {
+            let converted = createJournalEntryComponent.createJournalEntryComponent(journal)
             DOMRep.displayEntriesInDOM(converted);
         } 
     })
@@ -70,8 +83,8 @@ frusBTN.addEventListener("click", (event) => {
         const filteredEntries = entries.filter(entry => entry.Mood === mood)
         console.log(filteredEntries)
         entriesDIV.innerHTML = ""
-        for (const journal of filteredEntries) {
-            const converted = HTMLRep.createJournalEntryComponent(journal)
+        for (let journal of filteredEntries) {
+            let converted = createJournalEntryComponent.createJournalEntryComponent(journal)
             DOMRep.displayEntriesInDOM(converted);
         } 
     })
@@ -82,8 +95,8 @@ sadBTN.addEventListener("click", (event) => {
         const filteredEntries = entries.filter(entry => entry.Mood === mood)
         console.log(filteredEntries)
         entriesDIV.innerHTML = ""
-        for (const journal of filteredEntries) {
-            const converted = HTMLRep.createJournalEntryComponent(journal)
+        for (let journal of filteredEntries) {
+            let converted = createJournalEntryComponent.createJournalEntryComponent(journal)
             DOMRep.displayEntriesInDOM(converted);
         } 
     })
@@ -101,10 +114,16 @@ sadBTN.addEventListener("click", (event) => {
     entriesDIV.addEventListener("click", (event) => {
     if (event.target.id.startsWith("deleteBTN--")) { 
         const deleteBTNID = event.target.id.split("--")[1]
-        console.log(deleteBTNID)
+        entriesDIV.innerHTML = ""
         dataManager.deleteEntry(deleteBTNID)
         .then(dataManager.entriesFetcher)
-        .then(DOMRep.displayEntriesInDOM)
+        .then(arrayOfEntries => {
+            for (let currentEntry of arrayOfEntries ) {
+                let convertedJournal = createJournalEntryComponent.createJournalEntryComponent(currentEntry);
+                DOMRep.displayEntriesInDOM(convertedJournal)
+        }
+        })
+        // .then(DOMRep.displayEntriesInDOM)
         
     }
 
@@ -112,6 +131,5 @@ sadBTN.addEventListener("click", (event) => {
 })
 
 
-  getDataRender()
 // registerDeleteListener()
-dataManager.entriesFetcher().then(DOMRep.displayEntriesInDOM)
+// dataManager.entriesFetcher().then(DOMRep.displayEntriesInDOM)
