@@ -1,6 +1,6 @@
 
-
-const createJournalEntryComponent = (journalEntry) => {
+const createJournalEntryComponent = {
+ createJournalEntryComponent (journalEntry) {
     return `
      <article class="entryLog">
      <h2>${journalEntry.Date}</h2>
@@ -11,9 +11,9 @@ const createJournalEntryComponent = (journalEntry) => {
      </article>`
 
 
-}
+},
 
-const createEntryObj = (date, topic, entry, mood) => {
+ createEntryObj  (date, topic, entry, mood)  {
     return {
         Date: date,
         Topic: topic,
@@ -23,7 +23,9 @@ const createEntryObj = (date, topic, entry, mood) => {
 }
 
 
-
-export default {
-    createJournalEntryComponent, createEntryObj
 }
+
+export default 
+    createJournalEntryComponent
+
+
